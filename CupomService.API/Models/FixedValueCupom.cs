@@ -12,6 +12,7 @@ namespace CupomService.API.Models
             {
                 throw new DomainException("Discount value cannot be lower than 0.");
             }
+
             Value = value;
         }
     }

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CupomService.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4319fc630b3e26c138237e76f20737f60c08c79")]
 [assembly: System.Reflection.AssemblyProductAttribute("CupomService.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CupomService.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
