@@ -8,7 +8,7 @@ namespace CupomService.API.Services
     {
         private readonly List<Cupom> _cupons = new List<Cupom>();
 
-        public async Task CreateCupomAsync(Cupom cupom)
+        public Task CreateCupomAsync(Cupom cupom)
         {
             if (cupom == null)
             {
@@ -16,7 +16,7 @@ namespace CupomService.API.Services
             }
 
             _cupons.Add(cupom);
-            await Task.CompletedTask;
+            return Task.CompletedTask;
         }
 
         public async Task<IEnumerable<Cupom>> GetAllAsync()
@@ -24,16 +24,16 @@ namespace CupomService.API.Services
             return await Task.FromResult(_cupons);
         }
 
-        public async Task<Cupom> GetCupomByIdAsync(int id)
+        public Task<Cupom> GetCupomByIdAsync(int id)
         {
-            var cupom = _cupons.Find(x => x.Id == id);
+            var cupom = _cupons.FirstOrDefault(x => x.Id == id);
 
             if (cupom == null)
             {
                 throw new DomainException("Not found.");
             }
 
-            return await Task.FromResult(cupom);
+            return Task.FromResult(cupom);
         }
         public async Task<Cupom> GetCupomByCodeAsync(string code)
         {
@@ -50,16 +50,7 @@ namespace CupomService.API.Services
             }
 
             return await Task.FromResult(cupom);
-        }
-
-        public async Task<Cupom> UpdateCupomAsync(int id, string code, string title)
-        {
-            var cupom = await GetCupomByIdAsync(id);
-
-            cupom.UpdateCupom(code, title);
-
-            return cupom;
-        }
+        }        
 
         public async Task<Cupom> UpdatePercentageCupomAsync(int id, string code, string title, decimal percentageUpdated)
         {

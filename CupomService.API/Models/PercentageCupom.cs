@@ -27,7 +27,11 @@ namespace CupomService.API.Models
                 {
                     throw new DomainException("Insert a value above 0.");
                 }
-            }          
+
+                Percentage = percentageUpdated.Value;
+            }
+
+            
 
         }
     }

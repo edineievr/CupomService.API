@@ -26,6 +26,8 @@ namespace CupomService.API.Models
                 {
                     throw new DomainException("Insert a value above 0.");
                 }
+
+                Value = valueUpdated.Value;
             }
 
         }
