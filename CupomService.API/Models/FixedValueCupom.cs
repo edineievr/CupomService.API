@@ -15,5 +15,19 @@ namespace CupomService.API.Models
 
             Value = value;
         }
+
+        public void UpdateCupom(string? code = null, string? title = null, decimal? valueUpdated = null)
+        {
+            base.UpdateCupom(code, title);
+
+            if (valueUpdated != null)
+            {
+                if (valueUpdated <= 0)
+                {
+                    throw new DomainException("Insert a value above 0.");
+                }
+            }
+
+        }
     }
 }

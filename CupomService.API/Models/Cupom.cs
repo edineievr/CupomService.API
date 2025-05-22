@@ -37,7 +37,7 @@ namespace CupomService.API.Models
             {
                 throw new DomainException("Invalid expiratin date.");
             }
-            
+
             if (uses <= 0)
             {
                 throw new DomainException("The cupom must have at least one use.");
@@ -55,20 +55,24 @@ namespace CupomService.API.Models
             IsActive = false;
         }
 
-        public virtual void UpdateCupom(string code, string title)
+        public virtual void UpdateCupom(string? code = null, string? title = null)
         {
-            if (string.IsNullOrEmpty(code))
+
+            if (string.IsNullOrEmpty(code) && string.IsNullOrEmpty(title))
             {
-                throw new DomainException("Code cannot be null or empty.");
+                throw new DomainException("Provide at least one value to update.");
             }
 
-            if (string.IsNullOrEmpty(title))
+            if (!string.IsNullOrEmpty(code))
             {
-                throw new DomainException("title cannot be null or empty.");
+                Code = code;
             }
-            
-            Code = code;
-            Title = title;
+
+            if (!string.IsNullOrEmpty(title))
+            {
+                Title = title;
+            }
+
         }
     }
 }

@@ -16,5 +16,19 @@ namespace CupomService.API.Models
 
             Percentage = percentage;
         }
+
+        public void UpdateCupom(string? code = null, string? title = null, decimal? percentageUpdated = null)
+        {
+            base.UpdateCupom(code, title);
+
+            if (percentageUpdated != null)
+            {
+                if (percentageUpdated <= 0)
+                {
+                    throw new DomainException("Insert a value above 0.");
+                }
+            }          
+
+        }
     }
 }

@@ -52,19 +52,52 @@ namespace CupomService.API.Services
             return await Task.FromResult(cupom);
         }
 
-        /*public async Task<Cupom> UpdateCupomAsync(int id, string code, string title)
+        public async Task<Cupom> UpdateCupomAsync(int id, string code, string title)
+        {
+            var cupom = await GetCupomByIdAsync(id);
+
+            cupom.UpdateCupom(code, title);
+
+            return cupom;
+        }
+
+        public async Task<Cupom> UpdatePercentageCupomAsync(int id, string code, string title, decimal percentageUpdated)
+        {
+            var cupom = await GetCupomByIdAsync(id);
+
+            if (cupom == null)
+            {
+                throw new DomainException("Cupom not found");
+            }
+
+            if (cupom is not PercentageCupom percentageCupom)
+            {
+                throw new DomainException("Cupom is not of type percentage");
+            }
+
+            percentageCupom.UpdateCupom(code, title, percentageUpdated);
+            
+            return percentageCupom;
+        }
+
+        public async Task<Cupom> UpdateFixedValueCupomAsync(int id, string code, string title, decimal valueUpdated)
         {
             var cupom = await GetCupomByIdAsync(id);
 
             if (cupom == null)
             {
                 throw new DomainException("Cupom not found.");
+            } 
+            
+            if (cupom is not FixedValueCupom fixedValueCupom)
+            {
+                throw new DomainException("Cupom is not of type Fixed Value.");
             }
 
-            cupom.UpdateCupom(code, title);
-
-
-        }*/
+            fixedValueCupom.UpdateCupom(code, title, valueUpdated);  
+            
+            return fixedValueCupom;
+        }
 
         public async Task InactivateCupomAsync(int id)
         {
